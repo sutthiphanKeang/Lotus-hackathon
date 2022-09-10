@@ -5,6 +5,7 @@ import 'package:lotussapp/components/default_button.dart';
 import '../../../constants.dart';
 import '../../../data/CartSingleton.dart';
 import '../../../size_config.dart';
+import '../../home/home_screen.dart';
 
 class CheckoutCard extends StatelessWidget {
   const CheckoutCard({
@@ -86,7 +87,7 @@ double getTotalPrice(){
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
                     text: "Check Out",
-                    press: () {},
+                    press: () => Navigator.pushNamed(context, HomeScreen.routeName),
                   ),
                 ),
               ],
