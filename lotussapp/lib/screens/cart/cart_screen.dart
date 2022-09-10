@@ -8,6 +8,9 @@ class CartScreen extends StatelessWidget {
   static String routeName = "/cart";
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as String;
+  debugPrint('recieved arg! $args');
+
     return Scaffold(
       appBar: buildAppBar(context),
       body: Body(),

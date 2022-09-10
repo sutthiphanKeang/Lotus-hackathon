@@ -29,7 +29,7 @@ class QrScreen extends StatelessWidget {
             } else {
               final String code = barcode.rawValue!;//UPC code in code
               debugPrint('Barcode found! $code');
-              Navigator.popAndPushNamed(context,  CartScreen.routeName);
+              Navigator.popAndPushNamed(context,  CartScreen.routeName, arguments: code);
             }
           }),
     );
