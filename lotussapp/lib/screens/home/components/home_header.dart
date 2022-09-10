@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lotussapp/screens/cart/cart_screen.dart';
+import 'package:lotussapp/screens/qrscan/qrscan_screen.dart';
 
 import '../../../size_config.dart';
 import 'icon_btn_with_counter.dart';
@@ -25,7 +26,7 @@ class HomeHeader extends StatelessWidget {
           ),
           IconBtnWithCounter(
             svgSrc: "assets/icons/qr-svgrepo.svg",
-            press: () {},
+            press: () => Navigator.pushNamed(context, QrScreen.routeName),
           ),
         ],
       ),

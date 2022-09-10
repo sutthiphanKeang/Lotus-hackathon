@@ -4,6 +4,7 @@
         android:label="lotussapp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <user-permission android:name="android.permission.CAMERA"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
