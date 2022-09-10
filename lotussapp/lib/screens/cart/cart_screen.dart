@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:lotussapp/models/Cart.dart';
 
+
+import '../../data/Local.dart';
+import '../../data/Network.dart';
+import '../../data/ProductModel.dart';
 import 'components/body.dart';
 import 'components/check_out_card.dart';
+import '../../data/CartSingleton.dart';
 
 class CartScreen extends StatelessWidget {
   static String routeName = "/cart";
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as String;
-  debugPrint('recieved arg! $args');
+    if (ModalRoute.of(context)!.settings.arguments != null){
+      final args = ModalRoute.of(context)!.settings.arguments as String;
+      debugPrint('recieved arg! $args');
+      getProductByBarcode(context, args);
+    }
 
     return Scaffold(
       appBar: buildAppBar(context),
@@ -33,5 +40,21 @@ class CartScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<Product> getProductByBarcode(BuildContext context, String barcode) async {
+      String sku = await Local.getProductIdByCode(context, barcode);
+      if (sku.isEmpty) throw Error();
+      Product product = await Network.fetchProductBySKU(sku);
+     // String name = product.name;
+
+      //debugPrint('recieved arg! $name');
+
+      CartSingleton.instance.products.add(product);
+
+      //CartSingleton.instance.products[0].
+
+
+      return product;
   }
 }
