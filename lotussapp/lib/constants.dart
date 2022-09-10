@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lotussapp/size_config.dart';
 
+
 const kPrimaryColor = Color.fromARGB(255, 7, 159, 170);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
@@ -8,7 +9,7 @@ const kPrimaryGradientColor = LinearGradient(
   end: Alignment.bottomRight,
   colors: [Color.fromARGB(255, 249, 255, 62), Color.fromARGB(255, 212, 222, 20)],
 );
-const kSecondaryColor = Color.fromARGB(255, 226, 209, 53);
+const kSecondaryColor = Color.fromARGB(255, 198, 212, 1);
 const kTextColor = Color(0xFF757575);
 
 const kAnimationDuration = Duration(milliseconds: 200);

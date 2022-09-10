@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lotussapp/components/default_button.dart';
 import 'package:lotussapp/models/Product.dart';
+import 'package:lotussapp/screens/cart/cart_screen.dart';
 import 'package:lotussapp/size_config.dart';
 
 import 'product_description.dart';
@@ -36,7 +37,7 @@ class Body extends StatelessWidget {
                         ),
                         child: DefaultButton(
                           text: "Add To Cart",
-                          press: () {},
+                          press: () => Navigator.pushNamed(context, CartScreen.routeName),
                         ),
                       ),
                 ),
