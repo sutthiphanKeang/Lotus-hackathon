@@ -1,14 +1,16 @@
 
 
-import 'ProductModel.dart';
+import 'package:lotussapp/data/ProductModel.dart';
+
+
 
 class CartSingleton {
-  final List<Product> _products = [];
+  final List<ProductData> _products = [];
 
   CartSingleton._();
   static final instance = CartSingleton._();
 
-  List<Product> get products {
+  List<ProductData> get products {
     return _products;
   }
 }

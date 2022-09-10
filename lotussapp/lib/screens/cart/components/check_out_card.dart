@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lotussapp/components/default_button.dart';
 
 import '../../../constants.dart';
+import '../../../data/CartSingleton.dart';
 import '../../../size_config.dart';
 
 class CheckoutCard extends StatelessWidget {
@@ -10,6 +11,13 @@ class CheckoutCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+double getTotalPrice(){
+  List product = CartSingleton.instance.products;
+  double price = 0;
+  product.forEach((element) {price+=element.priceRange['minimumPrice']['finalPrice']['value'];});
+
+  return price;
+}
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -68,7 +76,7 @@ class CheckoutCard extends StatelessWidget {
                     text: "Total:\n",
                     children: [
                       TextSpan(
-                        text: "337.15\฿",
+                        text: "${getTotalPrice()}\฿",
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],

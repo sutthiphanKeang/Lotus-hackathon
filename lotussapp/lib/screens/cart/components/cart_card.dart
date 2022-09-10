@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lotussapp/data/ProductModel.dart';
 
 
 import '../../../constants.dart';
@@ -10,7 +11,7 @@ class CartCard extends StatelessWidget {
     required this.cart,
   }) : super(key: key);
 
-  final Cart cart;
+  final ProductData cart;
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +19,11 @@ class CartCard extends StatelessWidget {
       children: [
         SizedBox(
           width: 88,
-          child: AspectRatio(
-            aspectRatio: 0.88,
-            child: Container(
-              padding: EdgeInsets.all(getProportionateScreenWidth(10)),
-              decoration: BoxDecoration(
-                color: Color(0xFFF5F6F9),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Image.asset(cart.product.images[0]),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
             ),
+            child: Image.network(cart.mediaGallery[0]['url']!),
           ),
         ),
         SizedBox(width: 20),
@@ -35,22 +31,15 @@ class CartCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              cart.product.title,
+              cart.name,
               style: TextStyle(color: Colors.black, fontSize: 16),
               maxLines: 2,
             ),
             SizedBox(height: 10),
-            Text.rich(
-              TextSpan(
-                text: "${cart.product.price}\฿",
+            Text(
+              "${cart.priceRange['minimumPrice']['finalPrice']['value']}\฿",
                 style: TextStyle(
                     fontWeight: FontWeight.w600, color: kPrimaryColor),
-                children: [
-                  TextSpan(
-                      text: " x${cart.numOfItem}",
-                      style: Theme.of(context).textTheme.bodyText1),
-                ],
-              ),
             )
           ],
         )

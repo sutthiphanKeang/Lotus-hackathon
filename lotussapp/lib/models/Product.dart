@@ -71,4 +71,4 @@ List<Product> demoProducts = [
 ];
 
 const String description =
-    "ใส่รายละเอียดดดดดดเพื่ออออมีนะ แต่กูคิดไม่ออกจ้าาาา ตอนนี้ ง่วง  …";
+    "Example Description Example Description Example Description Example Description Example Description…";

@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'ProductModel.dart';
 class Network {
-  static Future<Product> fetchProductBySKU(String sku) async {
+  static Future<ProductData> fetchProductBySKU(String sku) async {
     //16576918 coke
     final response = await http.get(
         Uri.parse(
@@ -17,7 +17,7 @@ class Network {
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      return Product.fromJson(jsonDecode(response.body)['data']);
+      return ProductData.fromJson(jsonDecode(response.body)['data']);
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.

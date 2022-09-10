@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-
 import '../../data/Local.dart';
 import '../../data/Network.dart';
 import '../../data/ProductModel.dart';
 import 'components/body.dart';
 import 'components/check_out_card.dart';
 import '../../data/CartSingleton.dart';
+
 
 class CartScreen extends StatelessWidget {
   static String routeName = "/cart";
@@ -34,7 +34,7 @@ class CartScreen extends StatelessWidget {
             style: TextStyle(color: Colors.black),
           ),
           Text(
-            "${demoCarts.length} items",
+            "${CartSingleton.instance.products.length} items",
             style: Theme.of(context).textTheme.caption,
           ),
         ],
@@ -42,13 +42,13 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  Future<Product> getProductByBarcode(BuildContext context, String barcode) async {
+  Future<ProductData> getProductByBarcode(BuildContext context, String barcode) async {
       String sku = await Local.getProductIdByCode(context, barcode);
       if (sku.isEmpty) throw Error();
-      Product product = await Network.fetchProductBySKU(sku);
+      ProductData product = await Network.fetchProductBySKU(sku);
      // String name = product.name;
 
-      //debugPrint('recieved arg! $name');
+      debugPrint('recieved product! ${product.name}');
 
       CartSingleton.instance.products.add(product);
 

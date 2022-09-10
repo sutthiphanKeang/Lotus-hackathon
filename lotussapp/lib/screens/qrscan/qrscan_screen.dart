@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lotussapp/screens/cart/cart_screen.dart';
+import 'package:lotussapp/screens/home/home_screen.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 
@@ -30,6 +31,7 @@ class QrScreen extends StatelessWidget {
               final String code = barcode.rawValue!;//UPC code in code
               debugPrint('Barcode found! $code');
               Navigator.popAndPushNamed(context,  CartScreen.routeName, arguments: code);
+              //not real time use state management!!!!!!!!!!
             }
           }),
     );

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lotussapp/models/Cart.dart';
 
+
+import '../../../data/CartSingleton.dart';
 import '../../../size_config.dart';
 import 'cart_card.dart';
 
@@ -17,15 +18,15 @@ class _BodyState extends State<Body> {
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: ListView.builder(
-        itemCount: demoCarts.length,
+        itemCount: CartSingleton.instance.products.length,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
           child: Dismissible(
-            key: Key(demoCarts[index].product.id.toString()),
+            key: Key(CartSingleton.instance.products[index].id.toString()),
             direction: DismissDirection.endToStart,
             onDismissed: (direction) {
               setState(() {
-                demoCarts.removeAt(index);
+                CartSingleton.instance.products.removeAt(index);
               });
             },
             background: Container(
@@ -41,7 +42,7 @@ class _BodyState extends State<Body> {
                 ],
               ),
             ),
-            child: CartCard(cart: demoCarts[index]),
+            child: CartCard(cart: CartSingleton.instance.products[index]),
           ),
         ),
       ),
