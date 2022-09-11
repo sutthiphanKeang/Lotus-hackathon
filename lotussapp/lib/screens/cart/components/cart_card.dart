@@ -59,7 +59,13 @@ class CartCard extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              "Discount: ${cart.priceRange['minimumPrice']['finalPrice']['value']} \฿",
+              "Discount : ${cart.priceRange['minimumPrice']['discount']['amountOff']} \฿",
+                style: TextStyle(
+                    fontWeight: FontWeight.w600, color: kPrice),
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Total : ${cart.priceRange['minimumPrice']['finalPrice']['value']} \฿",
                 style: TextStyle(
                     fontWeight: FontWeight.w600, color: kPrimaryColor),
             )
@@ -75,7 +81,7 @@ class CartCard extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              "Price: ${cart.priceRange['minimumPrice']['finalPrice']['value']}\฿",
+              "Total: ${cart.priceRange['minimumPrice']['finalPrice']['value']}\฿",
                 style: TextStyle(
                     fontWeight: FontWeight.w600, color: kPrimaryColor),
             )

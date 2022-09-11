@@ -21,6 +21,7 @@ double getRegularPrice(){
   return price;
 }
 
+
 double getFinalPrice(){
   List product = CartSingleton.instance.products;
   double price = 0;
