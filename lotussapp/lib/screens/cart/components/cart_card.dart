@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:lotussapp/data/ProductModel.dart';
 
 
@@ -29,21 +30,55 @@ class CartCard extends StatelessWidget {
         SizedBox(width: 20),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
+          children: displayDiscountWidget(),
+        )
+      ],
+    );
+  }
+
+  List<Widget> displayDiscountWidget() {
+    if(cart.priceRange['minimumPrice']['regularPrice']['value'] != cart.priceRange['minimumPrice']['finalPrice']['value']) {
+      return hasDiscountWighet();
+    } else {
+     return hasNotDiscountWighet();
+    }
+  }
+
+  List<Widget> hasDiscountWighet() {
+    return [
+      Text(
               cart.name,
               style: TextStyle(color: Colors.black, fontSize: 16),
               maxLines: 2,
             ),
             SizedBox(height: 10),
             Text(
-              "${cart.priceRange['minimumPrice']['finalPrice']['value']}\฿",
+              "Price: ${cart.priceRange['minimumPrice']['regularPrice']['value']} \฿",
+                style: TextStyle(decoration: TextDecoration.lineThrough,
+                    fontWeight: FontWeight.w600, color: kDiscount),
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Discount: ${cart.priceRange['minimumPrice']['finalPrice']['value']} \฿",
                 style: TextStyle(
                     fontWeight: FontWeight.w600, color: kPrimaryColor),
             )
-          ],
-        )
-      ],
-    );
+    ];
+  }
+
+  List<Widget> hasNotDiscountWighet() {
+    return [
+      Text(
+              cart.name,
+              style: TextStyle(color: Colors.black, fontSize: 16),
+              maxLines: 2,
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Price: ${cart.priceRange['minimumPrice']['finalPrice']['value']}\฿",
+                style: TextStyle(
+                    fontWeight: FontWeight.w600, color: kPrimaryColor),
+            )
+    ];
   }
 }

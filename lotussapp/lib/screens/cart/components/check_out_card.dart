@@ -86,12 +86,12 @@ double getFinalPrice(){
                     text: "Total:\n",
                     children: [
                       TextSpan(
-                        text: "${getRegularPrice()}\฿",
-                        style: TextStyle(decoration: TextDecoration.lineThrough,fontSize: 16, color: Colors.black),
+                        text: "${getRegularPrice()} \฿",
+                        style: TextStyle(decoration: TextDecoration.lineThrough,fontWeight: FontWeight.w800, fontSize: 16, color: kDiscount),
                       ),
                       TextSpan(
-                        text: "    ${getFinalPrice()}\฿",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        text: "    ${getFinalPrice()} \฿",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: kPrimaryColor),
                       ),
                     ],
                   ),
