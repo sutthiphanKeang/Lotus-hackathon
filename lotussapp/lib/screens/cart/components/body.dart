@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 
 import '../../../data/CartSingleton.dart';
@@ -14,7 +15,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Obx(() => Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: ListView.builder(
@@ -46,6 +47,6 @@ class _BodyState extends State<Body> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../../data/Local.dart';
 import '../../data/Network.dart';
@@ -20,7 +21,7 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: buildAppBar(context),
-      body: Body(),
+      body:  Body(),
       bottomNavigationBar: CheckoutCard(),
     );
   }
@@ -33,10 +34,11 @@ class CartScreen extends StatelessWidget {
             "Your Cart",
             style: TextStyle(color: Colors.black),
           ),
-          Text(
+          Obx(() => Text(
             "${CartSingleton.instance.products.length} items",
             style: Theme.of(context).textTheme.caption,
           ),
+          )
         ],
       ),
     );

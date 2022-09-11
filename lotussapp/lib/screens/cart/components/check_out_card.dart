@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:lotussapp/components/default_button.dart';
 
 import '../../../constants.dart';
@@ -12,7 +13,15 @@ class CheckoutCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-double getTotalPrice(){
+double getRegularPrice(){
+  List product = CartSingleton.instance.products;
+  double price = 0;
+  product.forEach((element) {price+=element.priceRange['minimumPrice']['regularPrice']['value'];});
+
+  return price;
+}
+
+double getFinalPrice(){
   List product = CartSingleton.instance.products;
   double price = 0;
   product.forEach((element) {price+=element.priceRange['minimumPrice']['finalPrice']['value'];});
@@ -21,7 +30,7 @@ double getTotalPrice(){
 }
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Obx(() =>Container(
       padding: EdgeInsets.symmetric(
         vertical: getProportionateScreenWidth(15),
         horizontal: getProportionateScreenWidth(30),
@@ -77,7 +86,11 @@ double getTotalPrice(){
                     text: "Total:\n",
                     children: [
                       TextSpan(
-                        text: "${getTotalPrice()}\฿",
+                        text: "${getRegularPrice()}\฿",
+                        style: TextStyle(decoration: TextDecoration.lineThrough,fontSize: 16, color: Colors.black),
+                      ),
+                      TextSpan(
+                        text: "    ${getFinalPrice()}\฿",
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],
@@ -95,6 +108,6 @@ double getTotalPrice(){
           ],
         ),
       ),
-    );
+    ));
   }
 }
